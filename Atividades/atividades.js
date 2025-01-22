@@ -89,12 +89,87 @@ function calcular() {
 
 //Exercício 4
 
-function sonoUsuario() {
-    let horasSono = prompt('Quantas horas você dormiu?');
-    if (horasSono <= 8) {
-        alert('Não dormiu o suficiente');
+function identificarSono() {
+    const qtdHoras = prompt('Quantas horas você tem dormido por noite?');
+    if (qtdHoras < 8) {
+        alert('Você está dormindo pouco. Durma mais!');
+    } else {
+        alert('Você está dormindo o suficiente, continue assim!');
     }
-    else { 
-        alert('Você dormiu o suficiente'); 
+}
+
+//Exercício 5
+
+//criar um método em fortado de 12 horas
+
+function horaFormato12() {
+    const qtdHora = prompt('Que horas são?');
+
+    if (qtdHora > 12) {
+        alert(qtdHora - 12 + 'p.m');
+    } else {
+        alert(qtdHora + 'a.m');
+    }
+}
+
+function testarOperadorOu() {
+    const nro = prompt('Informe um digito');
+    if (nro == 5 || nro == 10) {
+        alert('O número é 5 ou 10');
+    } else {
+        alert('Outro número');
+    }
+}
+
+function testarOperadorE() {
+    const idade = prompt('Informe a sua idade');
+    const idadeAmigo = prompt('Informe a idade do seu amigo');
+    if (idade >= 18 && idadeAmigo >= 18) {
+        alert('Vocês estão liberados para beber');
+    } else {
+        alert('Infelizmente não podem beber');
+    }
+}
+
+function validarNumeroEntre(vlInicio, vlFinal, vlValidar) {
+    if (vlValidar >= vlInicio && vlValidar <= vlFinal) {
+        return true;
+    }
+    return false;
+}
+
+
+//Exercício 6
+
+function verificarEntradaBalada() {
+    const idade = prompt('Informe a sua idade');
+    const lista = prompt('Você tem nome na lista? Digite Sim ou não');
+    const ingresso = prompt('Você tem ingresso? Digite Sim o Não');
+
+    if (idade >= 18 && (ingresso.toUpperCase() == 'SIM' || lista.toUpperCase() == 'SIM')) {
+        alert('Entrada permitida');
+    } else {
+        alert('Entrada negada');
+    }
+}
+
+function verificarEntradaBaladaMelhorado() {
+    if (prompt('Informe a sua idade') >= 18 &&
+        (prompt('Você tem nome na lista?Digite Sim ou Não').toUpperCase() == 'SIM'
+            || prompt('Você tem ingresso? Digite Sim ou Não').toUpperCase() == 'SIM')) {
+        alert('Entrada permitida');
+    } else {
+        alert('Entrada negada');
+    }
+}
+
+// Exercício 7
+
+function verificarMeiaEntrada() {
+    const idade = prompt('Informe sua idade');
+    if (idade < 12 || idade > 60) {
+        alert('Você tem direito a meia-entrada');
+    } else {
+        alert('Você paga entrada inteira');
     }
 }
