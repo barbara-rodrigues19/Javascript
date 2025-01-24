@@ -87,6 +87,28 @@ function calcular() {
     limpar();
 }
 
+function calcularComSwitch() {
+    valor1 = parseFloat(valor1);
+    valor2 = parseFloat(valor2);
+    let resultado;
+    switch (operacao) {
+        case '+':
+            resultado = valor1 + valor2;
+            break;
+        case '-':
+            resultado = valor1 - valor2;
+            break;
+        case '*':
+            resultado = valor1 * valor2;
+            break;
+        case '/':
+            resultado = valor1 / valor2;
+            break;
+    }
+    alert('Resultado: ' + resultado);
+    limpar();
+}
+
 //Exercício 4
 
 function identificarSono() {
@@ -172,4 +194,44 @@ function verificarMeiaEntrada() {
     } else {
         alert('Você paga entrada inteira');
     }
+}
+
+function indentificarNomeUsuario() {
+    const nomeUsuario = prompt('Informe seu nome');
+    if (!nomeUsuario) {
+        alert('Entrada proibida. Obrigatório informar seu nome!');
+        indentificarNomeUsuario();
+    } else {
+        alert('Entrada liberada!')
+    }
+}
+
+function calcularIMC() {
+    const peso = prompt('Qual o seu peso?');
+    let altura = prompt('Qual a sua altura?');
+
+    //Verficando se está em centímetros para converter para metros
+
+    if (altura.indexOf('.') == -1 && altura.length > 1) {
+        altura = altura / 100;
+    }
+
+
+    const calculo = (peso / (altura * altura)).toFixed(2);
+
+    if (calculo <= 18.5) {
+        alert('Seu IMC é '+calculo+' e está abaixo do normal');
+    } else if (calculo > 18.5 && calculo <= 25) {
+        alert('Seu IMC é '+calculo+' e está com o peso normal!');
+    } else if (calculo > 25 && calculo <= 30) {
+
+        alert('Seu IMC é '+calculo+' e está acima do peso!');
+    } else {
+        alert('Seu IMC é '+calculo+' e significa obesidade.')
+    }
+}
+
+function diasDaSemana() {
+    const Domingo = 1 
+
 }
