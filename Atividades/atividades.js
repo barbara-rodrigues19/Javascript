@@ -220,18 +220,252 @@ function calcularIMC() {
     const calculo = (peso / (altura * altura)).toFixed(2);
 
     if (calculo <= 18.5) {
-        alert('Seu IMC é '+calculo+' e está abaixo do normal');
+        alert('Seu IMC é ' + calculo + ' e está abaixo do normal');
     } else if (calculo > 18.5 && calculo <= 25) {
-        alert('Seu IMC é '+calculo+' e está com o peso normal!');
+        alert('Seu IMC é ' + calculo + ' e está com o peso normal!');
     } else if (calculo > 25 && calculo <= 30) {
 
-        alert('Seu IMC é '+calculo+' e está acima do peso!');
+        alert('Seu IMC é ' + calculo + ' e está acima do peso!');
     } else {
-        alert('Seu IMC é '+calculo+' e significa obesidade.')
+        alert('Seu IMC é ' + calculo + ' e significa obesidade.')
     }
 }
 
-function diasDaSemana() {
-    const Domingo = 1 
-
+function converterDiaSemana() {
+    const diaSemana = parseInt(prompt('Informe o dia da semana em número'));
+    const DOMINGO = 1, SEGUNDA = 2, TERCA = 3, QUARTA = 4, QUINTA = 5, SEXTA = 6, SABADO = 7;
+    switch (diaSemana) {
+        case DOMINGO: {
+            alert('Domingo');
+            break;
+        }
+        case SEGUNDA: {
+            alert('Segunda-feira');
+            break;
+        }
+        case TERCA: {
+            alert('Terça-feira');
+            break;
+        }
+        case QUARTA: {
+            alert('Quarta-feira');
+            break;
+        }
+        case QUINTA: {
+            alert('Quinta-feira');
+            break;
+        }
+        case SEXTA: {
+            alert('Sexta-feira');
+            break;
+        }
+        case SABADO: {
+            alert('Sábado');
+            break;
+        }
+        default: {
+            alert('Dia inválido');
+        }
+    }
 }
+
+function calcularValorTotal() {
+    const valorProduto = parseFloat(prompt('Informe o valor total dos produtos'));
+    //calcular o valor da forma de pagamento
+    let total = valorProduto + calcularFormaPgto(valorProduto);
+    console.log('Total com forma de pagamento: ' + total);
+    //calcular o valor do desconto (se houver)
+    total -= calcularDesconto(valorProduto);
+    console.log('Total com cupom: ' + total);
+    //calcular o valor do frete
+    total += calcularFrete();
+    alert('Total da compra: R$' + total);
+}
+
+function calcularFormaPgto(vlProduto) {
+    const formaPgto = parseInt(prompt('Informe a forma de pagamento \n1 - Cartão de débito\n2 - Pix\n3 - Cartão de crédito\n4 - Boleto'));
+    const CARTAODEB = 1, PIX = 2, CARTAOCRED = 3, BOLETO = 4;
+    switch (formaPgto) {
+        case CARTAODEB:
+            return -(vlProduto * 0.05);
+        case PIX:
+            return -(vlProduto * 0.1);
+        case CARTAOCRED:
+            return vlProduto * 0.02;
+        case BOLETO:
+            return 0;
+    }
+}
+
+function calcularDesconto(vlProduto) {
+    const cupom = prompt('Você possui algum cupom? Se sim, digite-o');
+    let valorCupom = cupom.substring(0, 2);
+    if (verificarCupomValido(valorCupom)) {
+        //aplicar o desconto
+        return vlProduto * (valorCupom / 100);
+    }
+    return 0;
+}
+
+function verificarCupomValido(valorCupom) {
+    return !isNaN(valorCupom);
+}
+
+function calcularFrete() {
+    const tipoFrete = parseInt(prompt('Escolha o tipo de frete\n1 - Frete Padrão \n2 - Frete Expresso'));
+    const FRETEPADRAO = 1, FRETEEXPRESSO = 2;
+    switch (tipoFrete) {
+        case FRETEPADRAO:
+            return 10;
+        case FRETEEXPRESSO:
+            return 20;
+    }
+    return 0;
+}
+
+function loopUmaDez() {
+    console.log('Loop com for:');
+    for (let i = 1; i <= 10; i++) {
+        console.log(i)
+    }
+    console.log('Loop com while:');
+    let c = 1;
+    while (c <= 10) {
+        console.log(c);
+        c++;
+    }
+}
+
+function loopDezaUm() {
+    console.log('Loop com for:');
+    for (let i = 10; i > 0; i--) {
+        console.log(i)
+    }
+    console.log('Loop com while:');
+    let c = 10;
+    while (c > 0) {
+        console.log(c);
+        c--;
+    }
+}
+
+function loopParesAteDez() {
+    console.log('Loop com for:');
+    for (let i = 0; i <= 10; i += 2) {
+        console.log(i)
+    }
+    console.log('Loop com while:');
+    let c = 0;
+    while (c <= 10) {
+        console.log(c);
+        c += 2;
+    }
+}
+
+function loopImparesAteDez() {
+    console.log('Loop com for:');
+    for (let i = 1; i <= 10; i += 2) {
+        console.log(i)
+    }
+    console.log('Loop com while:');
+    let c = 1;
+    while (c <= 10) {
+        console.log(c);
+        c += 2;
+    }
+}
+
+function whileBreakEContinue() {
+    let numero = 0;
+    while (numero != 7) {
+        numero = prompt('Informe um número');
+        if (numero == 5) {
+            console.log('Achou um easter egg e pode sair do loop');
+            break;
+        } else if (numero == 3) {
+            console.log("Não imprime o número");
+            continue;
+        }
+        console.log(numero);
+    }
+}
+
+function pedirNota() {
+    let nota = 11;
+    while (nota < 0 || nota > 10) {
+        nota = prompt('Informe uma nota entre 0 e 10.');
+        if (nota < 0 || nota > 10) {
+            alert('Nota inválida');
+        }
+    }
+    alert('Nota válida');
+}
+
+function pedirNotaWhileTrue() {
+    let nota;
+    while (true) {
+        nota = prompt('Informe uma nota entre 0 e 10.');
+        if (nota < 0 || nota > 10) {
+            alert('Nota inválida.');
+        } else {
+            break;
+        }
+    }
+    alert('Nota válida');
+}
+
+function realizarLogin() {
+    const usuario = 'barbara@hotmail.com';
+    const senha = '1234';
+    let usuarioLogin, senhaLogin;
+    while (usuarioLogin != usuario || senhaLogin != senha) {
+        usuarioLogin = prompt('Informe seu usuário de login');
+        senhaLogin = prompt('Informe sua senha');
+    }
+    alert('Login realizado');
+}
+
+function realizarLoginWTrue() {
+    const usuario = 'barbara@hotmail.com';
+    const senha = '1234';
+    let usuarioLogin, senhaLogin;
+    while (true) {
+        usuarioLogin = prompt('Informe seu usuário de login');
+        senhaLogin = prompt('Informe sua senha');
+        if (usuarioLogin != usuario || senhaLogin != senha) {
+            alert('Usuário ou senha inválidos');
+        } else {
+            break;
+        }
+    }
+}
+
+function solicitarPalavrasWT() {
+    while (true) {
+        const palavra = prompt('Informe uma palavra');
+        if (palavra.length < 3) {
+            console.log('A palavra ' + palavra + ' foi desconsiderada pois possui menos de 3 caracteres.');
+            continue;
+        } else if (palavra == 'sair') {
+            break;
+        }
+        console.log('Palavra válida:' + palavra);
+    }
+}
+
+function solicitarPalavras() {
+    let palavra;
+    while (palavra != 'sair') {
+        palavra = prompt('Informe uma palavra');
+        if (palavra.length < 3) {
+            console.log('A palavra ' + palavra + ' foi desconsiderada pois possui menos de 3 caracteres');
+            continue;
+        }
+        console.log('Palavra válida:' + palavra);
+    }
+}
+
+
+
+
+
