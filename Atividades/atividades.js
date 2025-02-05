@@ -465,6 +465,41 @@ function solicitarPalavras() {
     }
 }
 
+function contardorArray() {
+    let numeros = [];
+    for (let i = 0; i < 10; i++) {
+        numeros.push(prompt('Informe 10 valores'))
+    }
+    console.log(numeros)
+}
+
+
+function realizarLoginUsuarios() {
+    const usuarios = ['tamires@@', 'babi123', 'matt456'];
+    const senhas = ['123', 'b456', 'm789'];
+    let usuarioLogin = prompt('Informe seu usuário de Login');
+    let senhaLogin = prompt('Informe sua senha');
+    let fezLogin = false;
+    for (let i = 0; i < usuarios.length; i++) {
+        if (usuarios[i] == usuarioLogin && senhas[i] == senhaLogin) {
+            fezLogin = true;
+            alert('Login realizado');
+            break;
+        }
+    }
+    if (!fezLogin) {
+        alert('Usuário ou senha inválido. Tente novamente!');
+    }
+}
+
+function contarLetrasDasPalavras() {
+    const palavras = ['Barbie', 'Polly', 'Suzie'];
+    palavras.forEach(letras => {
+        console.log('A palavra ' + letras + ' tem ' + letras.length + ' letras');
+        alert('A palavra ' + letras + ' tem ' + letras.length + ' letras');
+    })
+}
+
 
 
 
