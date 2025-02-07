@@ -492,13 +492,19 @@ function realizarLoginUsuarios() {
     }
 }
 
-function contarLetrasDasPalavras() {
+function contarLetrasDasPalavras() {         //texto e conteúdo
     const palavras = ['Barbie', 'Polly', 'Suzie'];
     palavras.forEach(letras => {
         console.log('A palavra ' + letras + ' tem ' + letras.length + ' letras');
         alert('A palavra ' + letras + ' tem ' + letras.length + ' letras');
     })
 }
+
+function contadorSoma() { // propriedades
+    const soma = document.getElementById('soma');
+    soma.innerText =  parseInt(soma.innerText) + 1;
+}
+
 
 
 
