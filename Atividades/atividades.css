@@ -1,0 +1,12 @@
+.escondido {
+    visibility: hidden;
+}
+
+.bt-escondido {
+    background-color: brown;
+}
+
+.bt-mostrar {
+    background-color: aquamarine;
+    border-radius: 15%;
+}
